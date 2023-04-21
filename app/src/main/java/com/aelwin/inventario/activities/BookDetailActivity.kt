@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.aelwin.inventario.R
 import com.aelwin.inventario.api.BookDetail
 import com.aelwin.inventario.api.ConsumeInventarioApi
 import com.aelwin.inventario.api.Reading
 import com.aelwin.inventario.databinding.ActivityBookDetailBinding
 import com.aelwin.inventario.util.Constantes
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,7 +48,16 @@ class BookDetailActivity : AppCompatActivity() {
         binding.tvPrice.text = book.precio.toString()
         binding.tvPublisher.text = book.editorial
         binding.tvOwner.text = book.propietario
+        Picasso.get().load(getBookImageURL(book.isbn))
+            .error(R.drawable.ic_image_not_found)
+            .into(binding.ivBook)
+        Log.i("Annatar", "sigue")
         binding.btnShowReadings.setOnClickListener { nagivateToShowReadings(book.lecturas) }
+    }
+
+    private fun getBookImageURL(isbn: String): String {
+        Log.i("Annatar", "aqui")
+        return "http://books.google.com/books/content?id=OF-REAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
     }
 
     private fun nagivateToShowReadings(lecturas: List<Reading>) {
