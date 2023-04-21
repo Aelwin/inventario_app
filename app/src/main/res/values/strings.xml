@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Inventario</string>
+
+    <string name="author_name">Nombre</string>
+    <string name="author_books_number">%s libros</string>
+    <string name="author_books">Libros:</string>
+    <string name="author_add_name">Nombre del autor</string>
+
+    <string name="book_category">Categoría</string>
+    <string name="book_isbn">ISBN</string>
+    <string name="book_price">Precio</string>
+    <string name="book_saga">Saga</string>
+    <string name="book_information">Información</string>
+    <string name="book_purchase_date">Fecha de compra</string>
+    <string name="book_publisher">Editorial</string>
+    <string name="book_show_readings">Ver Lecturas</string>
+    <string name="book_owner">Propietario</string>
+
+    <string name="create">Crear</string>
+</resources>
