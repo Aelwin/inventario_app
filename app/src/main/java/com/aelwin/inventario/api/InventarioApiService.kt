@@ -25,5 +25,5 @@ interface InventarioApiService {
     suspend fun getAuthor(@Path("id") id: Int): Response<Author>
 
     @POST("autores/")
-    suspend fun createAuthor(@Body author: AuthorCreate): Response<AuthorResponse>
+    suspend fun createAuthor(@Body author: AuthorCreate): Response<AuthorCreateResponse>
 }

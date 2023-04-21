@@ -9,5 +9,5 @@ data class Author(@SerializedName("id") val id: Int,
 
 data class AuthorCreate(@SerializedName("nombre") val nombre: String) { }
 
-data class AuthorResponse(@SerializedName("id") val id: Int,
-                  @SerializedName("nombre") val name: String) { }
+data class AuthorCreateResponse(@SerializedName("id") val id: Int,
+                                @SerializedName("nombre") val name: String) { }

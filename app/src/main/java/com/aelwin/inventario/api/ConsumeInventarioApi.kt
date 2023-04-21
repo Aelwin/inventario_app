@@ -1,7 +1,6 @@
 package com.aelwin.inventario.api
 
 import okhttp3.OkHttpClient
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
@@ -31,7 +30,7 @@ class ConsumeInventarioApi {
             return myResponse.body()
         }
 
-        suspend fun createAuthor(author: AuthorCreate): AuthorResponse? {
+        suspend fun createAuthor(author: AuthorCreate): AuthorCreateResponse? {
             val myResponse = retrofit.create(InventarioApiService::class.java).createAuthor(author)
             return myResponse.body()
         }
