@@ -1,5 +1,6 @@
 package com.aelwin.inventario.api
 
+import com.aelwin.inventario.util.Constantes
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -37,7 +38,7 @@ class ConsumeInventarioApi {
 
         private fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://24an09.deta.dev/")
+                .baseUrl(Constantes.SPACE_APP)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
