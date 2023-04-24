@@ -4,14 +4,12 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aelwin.inventario.adapters.AuthorAdapter
-import com.aelwin.inventario.api.Author
 import com.aelwin.inventario.api.AuthorCreate
 import com.aelwin.inventario.api.ConsumeInventarioApi
 import com.aelwin.inventario.databinding.ActivityAuthorBinding
@@ -47,7 +45,7 @@ class AuthorActivity : AppCompatActivity() {
         btnAddAuthor.setOnClickListener {
             val newAuthorName = edAuthorName.text.toString()
             if (newAuthorName.isNotEmpty() && newAuthorName.isNotBlank()) {
-                val newAuthor: AuthorCreate = AuthorCreate(nombre = newAuthorName)
+                val newAuthor = AuthorCreate(nombre = newAuthorName)
                 dialog.hide()
                 binding.progressBar.isVisible = true
                 CoroutineScope(Dispatchers.IO).launch {// Este código es asíncrono
@@ -72,7 +70,7 @@ class AuthorActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?) = false
         })
-        authorAdapter = AuthorAdapter() { navigateToDetail(it) }
+        authorAdapter = AuthorAdapter { navigateToDetail(it) }
         binding.rvAuthor.setHasFixedSize(true)
         binding.rvAuthor.layoutManager = LinearLayoutManager(this)
         binding.rvAuthor.adapter = authorAdapter
@@ -95,7 +93,12 @@ class AuthorActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {// Este código es asíncrono
             val authors = ConsumeInventarioApi.getAuthors(query)
             runOnUiThread {
-                authorAdapter.updateList(authors)
+                if (authors.isEmpty()) {
+                    binding.tvNoResults.isVisible = true
+                } else {
+                    binding.tvNoResults.isVisible = false
+                    authorAdapter.updateList(authors)
+                }
                 binding.progressBar.isVisible = false // Realmente se va a poner en 'gone'
             }
         }

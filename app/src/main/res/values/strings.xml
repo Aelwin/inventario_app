@@ -5,6 +5,7 @@
     <string name="author_books_number">%s libros</string>
     <string name="author_books">Libros:</string>
     <string name="author_add_name">Nombre del autor</string>
+    <string name="author_add">Añadir autor</string>
 
     <string name="book_category">Categoría</string>
     <string name="book_isbn">ISBN</string>
@@ -18,4 +19,6 @@
     <string name="book_image">Portada</string>
 
     <string name="create">Crear</string>
+    <string name="no_results">No se han encontrado resultados</string>
+
 </resources>
