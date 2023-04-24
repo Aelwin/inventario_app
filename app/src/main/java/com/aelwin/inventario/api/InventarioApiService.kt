@@ -15,6 +15,9 @@ interface InventarioApiService {
     @GET("libros/{id}")
     suspend fun getBook(@Path("id") id: Int): Response<BookDetail>
 
+    @GET("libros/{id}/lecturas")
+    suspend fun getReadings(@Path("id") id: Int): Response<List<Reading>>
+
     @GET("autores")
     suspend fun getAuthors(): Response<List<Author>>
 

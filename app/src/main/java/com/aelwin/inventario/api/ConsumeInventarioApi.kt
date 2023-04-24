@@ -4,7 +4,6 @@ import com.aelwin.inventario.util.Constantes
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class ConsumeInventarioApi {
 
     companion object {
@@ -34,6 +33,11 @@ class ConsumeInventarioApi {
         suspend fun getBook(id: Int): BookDetail? {
             val myResponse = retrofit.create(InventarioApiService::class.java).getBook(id)
             return myResponse.body()
+        }
+
+        suspend fun getReadings(bookID: Int): List<Reading> {
+            val myResponse = retrofit.create(InventarioApiService::class.java).getReadings(bookID)
+            return myResponse.body().orEmpty()
         }
 
         private fun getRetrofit(): Retrofit {
