@@ -7,7 +7,6 @@ import android.util.Log
 import com.aelwin.inventario.R
 import com.aelwin.inventario.api.BookDetail
 import com.aelwin.inventario.api.ConsumeInventarioApi
-import com.aelwin.inventario.api.Reading
 import com.aelwin.inventario.api.isbn.ConsumeIsbnApi
 import com.aelwin.inventario.databinding.ActivityBookDetailBinding
 import com.aelwin.inventario.util.Constantes
@@ -49,7 +48,7 @@ class BookDetailActivity : AppCompatActivity() {
         binding.tvPrice.text = book.precio.toString()
         binding.tvPublisher.text = book.editorial
         binding.tvOwner.text = book.propietario
-        binding.btnShowReadings.setOnClickListener { nagivateToShowReadings(book.lecturas) }
+        binding.btnShowReadings.setOnClickListener { navigateToShowReadings(book.id) }
         CoroutineScope((Dispatchers.IO)).launch {
             val imageUrl = ConsumeIsbnApi.getImageUrl(book.isbn)
             runOnUiThread {
@@ -60,10 +59,9 @@ class BookDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun nagivateToShowReadings(lecturas: List<Reading>) {
-        val intent = Intent(this, AuthorActivity::class.java)
-        //intent.putExtra(Constantes.AUTHOR_ID, id)
+    private fun navigateToShowReadings(bookId: Int) {
+        val intent = Intent(this, ReadingActivity::class.java)
+        intent.putExtra(Constantes.BOOK_ID, bookId)
         startActivity(intent)
-
     }
 }
