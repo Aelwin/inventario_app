@@ -161,6 +161,7 @@
             android:id="@+id/tvPurchaseDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             tools:text="20/03/2023" />
 
     </LinearLayout>
