@@ -5,6 +5,19 @@ import com.google.gson.annotations.SerializedName
 
 data class RatingReading(@SerializedName("valoracion") val valoracion: Int)
 
+data class ReadingCreate(@SerializedName("valoracion") val valoracion: Int,
+                         @SerializedName("lector") val lector: String,
+                         @SerializedName("fecha_inicio") val fechaInicio: String,
+                         @SerializedName("fecha_fin") val fechaFin: String?,
+                         @SerializedName("libro_id") val libroID: Int)
+
+data class ReadingCreateResponse(@SerializedName("id") val id: Int,
+                                 @SerializedName("valoracion") val valoracion: Int,
+                                 @SerializedName("lector") val lector: String,
+                                 @SerializedName("fecha_inicio") val fechaInicio: String,
+                                 @SerializedName("fecha_fin") val fechaFin: String,
+                                 @SerializedName("libro_id") val libroID: Int)
+
 data class Reading(@SerializedName("id") val id: Int,
                     @SerializedName("valoracion") val valoracion: Int,
                     @SerializedName("fecha_inicio") val fechaInicio: String,
