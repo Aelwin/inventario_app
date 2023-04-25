@@ -8,36 +8,41 @@ class ConsumeInventarioApi {
 
     companion object {
 
-        private val retrofit = getRetrofit()
+        private val retrofit = getRetrofit().create(InventarioApiService::class.java)
 
         suspend fun getAuthors(): List<Author> {
-            val myResponse = retrofit.create(InventarioApiService::class.java).getAuthors()
+            val myResponse = retrofit.getAuthors()
             return myResponse.body().orEmpty()
         }
 
         suspend fun getAuthors(name: String): List<Author> {
-            val myResponse = retrofit.create(InventarioApiService::class.java).getAuthors(name)
+            val myResponse = retrofit.getAuthors(name)
             return myResponse.body().orEmpty()
         }
 
         suspend fun getAuthor(id: Int): Author? {
-            val myResponse = retrofit.create(InventarioApiService::class.java).getAuthor(id)
+            val myResponse = retrofit.getAuthor(id)
             return myResponse.body()
         }
 
         suspend fun createAuthor(author: AuthorCreate): AuthorCreateResponse? {
-            val myResponse = retrofit.create(InventarioApiService::class.java).createAuthor(author)
+            val myResponse = retrofit.createAuthor(author)
             return myResponse.body()
         }
 
         suspend fun getBook(id: Int): BookDetail? {
-            val myResponse = retrofit.create(InventarioApiService::class.java).getBook(id)
+            val myResponse = retrofit.getBook(id)
             return myResponse.body()
         }
 
         suspend fun getReadings(bookID: Int): List<Reading> {
-            val myResponse = retrofit.create(InventarioApiService::class.java).getReadings(bookID)
+            val myResponse = retrofit.getReadings(bookID)
             return myResponse.body().orEmpty()
+        }
+
+        suspend fun createReading(reading: ReadingCreate): ReadingCreateResponse? {
+            val myResponse = retrofit.createReading(reading)
+            return myResponse.body()
         }
 
         private fun getRetrofit(): Retrofit {
