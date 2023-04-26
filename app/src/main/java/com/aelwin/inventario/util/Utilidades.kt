@@ -19,9 +19,17 @@ class Utilidades {
             return LocalDate.of(datePicker.year, datePicker.month, datePicker.dayOfMonth)
         }
 
-        fun getStringDateFromDatePicker(datePicker: DatePicker): String? {
+        fun getStringApiDateFromDatePicker(datePicker: DatePicker): String? {
+            return getStringDateFromDatePicker(datePicker, Constantes.FORMATO_FECHA_API)
+        }
+
+        fun getStringShowDateFromDatePicker(datePicker: DatePicker): String? {
+            return getStringDateFromDatePicker(datePicker, Constantes.FORMATO_FECHA)
+        }
+
+        private fun getStringDateFromDatePicker(datePicker: DatePicker, format: String): String? {
             return getLocalDateFromDatePicker(datePicker)?.format(
-                DateTimeFormatter.ofPattern(Constantes.FORMATO_FECHA_API)
+                DateTimeFormatter.ofPattern(format)
             )
         }
     }
