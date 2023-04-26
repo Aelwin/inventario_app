@@ -5,7 +5,7 @@
     <string name="author_books_number">%s libros</string>
     <string name="author_books">Libros:</string>
     <string name="author_add_name">Nombre del autor</string>
-    <string name="author_add">Añadir autor</string>
+    <string name="author_add">Nuevo autor</string>
 
     <string name="book_category">Categoría</string>
     <string name="book_isbn">ISBN</string>
@@ -17,12 +17,13 @@
     <string name="book_show_readings">Ver Lecturas</string>
     <string name="book_owner">Propietario</string>
     <string name="book_image">Portada</string>
+    <string name="book_add">Nuevo libro</string>
 
     <string name="readings">Lecturas</string>
     <string name="reading_reader">Lector</string>
     <string name="reading_start_date">Fecha inicio</string>
     <string name="reading_end_date">Fecha fin</string>
-    <string name="reading_add">Añadir lectura</string>
+    <string name="reading_add">Nueva lectura</string>
     <string name="reading_date_select">Seleccionar fecha</string>
 
     <string name="create">Crear</string>
