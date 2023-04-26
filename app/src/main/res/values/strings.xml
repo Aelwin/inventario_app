@@ -23,6 +23,7 @@
     <string name="reading_start_date">Fecha inicio</string>
     <string name="reading_end_date">Fecha fin</string>
     <string name="reading_add">Añadir lectura</string>
+    <string name="reading_date_select">Seleccionar fecha</string>
 
     <string name="create">Crear</string>
     <string name="no_results">No se han encontrado resultados</string>
