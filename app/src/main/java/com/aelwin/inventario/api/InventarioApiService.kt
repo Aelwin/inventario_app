@@ -32,4 +32,7 @@ interface InventarioApiService {
 
     @POST("lecturas/")
     suspend fun createReading(@Body reading: ReadingCreate): Response<ReadingCreateResponse>
+
+    @POST("libros/")
+    suspend fun createBook(@Body book: BookCreate): Response<Book>
 }

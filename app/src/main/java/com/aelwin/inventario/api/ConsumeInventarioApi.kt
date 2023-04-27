@@ -35,6 +35,11 @@ class ConsumeInventarioApi {
             return myResponse.body()
         }
 
+        suspend fun createBook(book: BookCreate): Book? {
+            val myResponse = retrofit.createBook(book)
+            return myResponse.body()
+        }
+
         suspend fun getReadings(bookID: Int): List<Reading> {
             val myResponse = retrofit.getReadings(bookID)
             return myResponse.body().orEmpty()
