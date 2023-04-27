@@ -19,26 +19,32 @@ class AuthorDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthorDetailBinding
     private lateinit var bookFromAuthorAdapter: BookFromAuthorAdapter
+    private var authorID = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthorDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val id = intent.getIntExtra(Constantes.AUTHOR_ID, 0)
-        bookFromAuthorAdapter = BookFromAuthorAdapter() { navigateToDetail(it) }
+        authorID = intent.getIntExtra(Constantes.AUTHOR_ID, 0)
+        bookFromAuthorAdapter = BookFromAuthorAdapter { navigateToDetail(it) }
         binding.rvBook.setHasFixedSize(true)
         binding.rvBook.layoutManager = LinearLayoutManager(this)
         binding.rvBook.adapter = bookFromAuthorAdapter
-        getAuthorInformation(id)
+        initListeners()
+        getAuthorInformation()
     }
 
-    private fun getAuthorInformation(id: Int) {
+    private fun initListeners() {
+        binding.fabAddBook.setOnClickListener { navigateToAddBook() }
+    }
+
+    private fun getAuthorInformation() {
         CoroutineScope(Dispatchers.IO).launch {
-            val author = ConsumeInventarioApi.getAuthor(id)
+            val author = ConsumeInventarioApi.getAuthor(authorID)
             if (author != null) {
                 runOnUiThread { createUI(author) }
             } else {
-                Log.e("Annatar", "Error al recuperar el autor con id ${id}")
+                Log.e("Annatar", "Error al recuperar el autor con id $authorID")
             }
         }
     }
@@ -53,5 +59,12 @@ class AuthorDetailActivity : AppCompatActivity() {
         val intent = Intent(this, BookDetailActivity::class.java)
         intent.putExtra(Constantes.BOOK_ID, id)
         startActivity(intent)
+    }
+
+    private fun navigateToAddBook() {
+        val intent = Intent(this, BookActivity::class.java)
+        intent.putExtra(Constantes.AUTHOR_ID, authorID)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up)
     }
 }
