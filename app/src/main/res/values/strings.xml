@@ -18,6 +18,11 @@
     <string name="book_owner">Propietario</string>
     <string name="book_image">Portada</string>
     <string name="book_add">Nuevo libro</string>
+    <string name="book_title">Título</string>
+    <string name="book_format">Formato</string>
+    <string name="book_language">Idioma</string>
+    <string name="book_synopsis">Resumen</string>
+    <string name="book_comments">Observaciones</string>
 
     <string name="readings">Lecturas</string>
     <string name="reading_reader">Lector</string>
@@ -27,6 +32,18 @@
     <string name="reading_date_select">Seleccionar fecha</string>
 
     <string name="create">Crear</string>
+    <string name="close">Cerrar</string>
     <string name="no_results">No se han encontrado resultados</string>
+
+    <string name="language_spanish">CASTELLANO</string>
+    <string name="language_english">INGLES</string>
+    <string name="language_euskera">EUSKERA</string>
+    <string name="language_japanish">JAPONES</string>
+    <string name="language_catalan">CATALAN</string>
+    
+    <string name="format_physical">FISICO</string>
+    <string name="format_digital">DIGITAL</string>
+    <string name="format_audio">AUDIO</string>
+
 
 </resources>
