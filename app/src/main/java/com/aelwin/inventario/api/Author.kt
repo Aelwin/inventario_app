@@ -11,3 +11,5 @@ data class AuthorCreate(@SerializedName("nombre") val nombre: String) { }
 
 data class AuthorCreateResponse(@SerializedName("id") val id: Int,
                                 @SerializedName("nombre") val name: String) { }
+
+data class AuthorBook(@SerializedName("id") val id: Int) { }
