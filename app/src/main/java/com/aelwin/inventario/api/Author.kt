@@ -4,12 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Author(@SerializedName("id") val id: Int,
                   @SerializedName("nombre") val name: String,
-                  @SerializedName("libros") val books: List<Book>) {
-}
+                  @SerializedName("libros") val books: List<Book>)
 
-data class AuthorCreate(@SerializedName("nombre") val nombre: String) { }
+data class AuthorCreate(@SerializedName("nombre") val nombre: String)
 
 data class AuthorCreateResponse(@SerializedName("id") val id: Int,
-                                @SerializedName("nombre") val name: String) { }
+                                @SerializedName("nombre") val name: String)
 
-data class AuthorBook(@SerializedName("id") val id: Int) { }
+data class AuthorBook(@SerializedName("id") val id: Int)
