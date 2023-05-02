@@ -34,6 +34,7 @@
     <string name="create">Crear</string>
     <string name="close">Cerrar</string>
     <string name="no_results">No se han encontrado resultados</string>
+    <string name="required">* Obligatorio</string>
 
     <string name="language_spanish">CASTELLANO</string>
     <string name="language_english">INGLES</string>
