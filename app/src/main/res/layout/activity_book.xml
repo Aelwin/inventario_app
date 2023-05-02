@@ -31,35 +31,53 @@
             android:text="@string/create" />
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:id="@+id/etTitle"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_title"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:errorEnabled="true"
+        app:helperText="@string/required">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etOwner"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_owner"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:errorEnabled="true"
+        app:helperText="@string/required">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etOwner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
     <RadioGroup
         android:id="@+id/rgFormat"
-        android:checkedButton="@+id/rbPhysical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checkedButton="@+id/rbPhysical"
         android:orientation="horizontal">
 
         <RadioButton
@@ -67,19 +85,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/format_physical"/>
+            android:text="@string/format_physical" />
+
         <RadioButton
             android:id="@+id/rbDigital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/format_digital"/>
+            android:text="@string/format_digital" />
+
         <RadioButton
             android:id="@+id/rbAudio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/format_audio"/>
+            android:text="@string/format_audio" />
     </RadioGroup>
 
     <include layout="@layout/linea_separacion" />
@@ -94,143 +114,204 @@
 
         <RadioGroup
             android:id="@+id/rgLanguage1"
-            android:checkedButton="@+id/rbSpanish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:checkedButton="@+id/rbSpanish"
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/rbSpanish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_spanish"/>
+                android:text="@string/language_spanish" />
+
             <RadioButton
                 android:id="@+id/rbEuskera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_euskera"/>
+                android:text="@string/language_euskera" />
+
             <RadioButton
                 android:id="@+id/rbCatalan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_catalan"/>
+                android:text="@string/language_catalan" />
         </RadioGroup>
+
         <RadioGroup
             android:id="@+id/rgLanguage2"
-            android:checkedButton="@+id/rbSpanish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:checkedButton="@+id/rbSpanish"
+            android:orientation="vertical">
+
             <RadioButton
                 android:id="@+id/rbEnglish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_english"/>
+                android:text="@string/language_english" />
+
             <RadioButton
                 android:id="@+id/rbJapanish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_japanish"/>
+                android:text="@string/language_japanish" />
         </RadioGroup>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etPrice"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_price"
-        android:inputType="number"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="number"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etISBN"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_isbn"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etISBN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etSynopsis"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_synopsis"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSynopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etPublisher"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_publisher"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etCategory"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_category"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etSaga"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_saga"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSaga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etPurchaseDate"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
         android:hint="@string/book_purchase_date"
-        android:inputType="date"
-        android:maxLines="3"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:startIconDrawable="@drawable/ic_calendar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPurchaseDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
-    <EditText
-        android:id="@+id/etComments"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginHorizontal="32dp"
         android:hint="@string/book_comments"
-        android:inputType="text"
-        android:maxLines="3"
-        android:paddingHorizontal="32dp" />
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="text"
+            android:maxLines="3" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <include layout="@layout/linea_separacion" />
 
