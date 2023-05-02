@@ -84,18 +84,22 @@
 
     <include layout="@layout/linea_separacion" />
 
-    <RadioGroup
-        android:id="@+id/rgLanguage"
-        android:checkedButton="@+id/rbSpanish"
+    <!-- Para poder pintar el RadioGroup en dos columnas tengo que tener 2 y una lógica
+        en la activity -->
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/rgLanguage1"
+            android:checkedButton="@+id/rbSpanish"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
+
             <RadioButton
                 android:id="@+id/rbSpanish"
                 android:layout_width="match_parent"
@@ -111,12 +115,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/language_catalan"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
+        </RadioGroup>
+        <RadioGroup
+            android:id="@+id/rgLanguage2"
+            android:checkedButton="@+id/rbSpanish"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="1">
             <RadioButton
                 android:id="@+id/rbEnglish"
                 android:layout_width="match_parent"
@@ -127,8 +133,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/language_japanish"/>
-        </LinearLayout>
-    </RadioGroup>
+        </RadioGroup>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <include layout="@layout/linea_separacion" />
 
