@@ -27,6 +27,13 @@ class Utilidades {
             return getStringDateFromDatePicker(datePicker, Constantes.FORMATO_FECHA)
         }
 
+        fun getApiDateFromStringOrNull(date: String?, format: String = Constantes.FORMATO_FECHA) : String? {
+            return if (date != null)
+                LocalDate.parse(date, DateTimeFormatter.ofPattern(format))
+                    .format(DateTimeFormatter.ofPattern(Constantes.FORMATO_FECHA_API))
+            else null
+        }
+
         private fun getStringDateFromDatePicker(datePicker: DatePicker, format: String): String? {
             return getLocalDateFromDatePicker(datePicker)?.format(
                 DateTimeFormatter.ofPattern(format)
