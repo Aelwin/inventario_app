@@ -1,318 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.BookActivity">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/teal_200"
-        app:contentInsetStart="0dp">
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/btClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_200"
-            android:contentDescription="@string/close"
-            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/teal_200"
+            app:contentInsetStart="0dp"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-        <Button
-            android:id="@+id/btNew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="8dp"
-            android:text="@string/create" />
-    </androidx.appcompat.widget.Toolbar>
+            <ImageButton
+                android:id="@+id/btClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_200"
+                android:contentDescription="@string/close"
+                android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
-    <com.google.android.material.textfield.TextInputLayout
+            <Button
+                android:id="@+id/btNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:text="@string/create" />
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_title"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:errorEnabled="true"
-        app:helperText="@string/required">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etTitle"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".activities.BookActivity">
 
-    <include layout="@layout/linea_separacion" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_owner"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:errorEnabled="true"
-        app:helperText="@string/required">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etOwner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <include layout="@layout/linea_separacion" />
-
-    <RadioGroup
-        android:id="@+id/rgFormat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checkedButton="@+id/rbPhysical"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rbPhysical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/format_physical" />
-
-        <RadioButton
-            android:id="@+id/rbDigital"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/format_digital" />
-
-        <RadioButton
-            android:id="@+id/rbAudio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/format_audio" />
-    </RadioGroup>
-
-    <include layout="@layout/linea_separacion" />
-
-    <!-- Para poder pintar el RadioGroup en dos columnas tengo que tener 2 y una lógica
-        en la activity -->
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioGroup
-            android:id="@+id/rgLanguage1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checkedButton="@+id/rbSpanish"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/rbSpanish"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_spanish" />
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_title"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:errorEnabled="true"
+                app:helperText="@string/required">
 
-            <RadioButton
-                android:id="@+id/rbEuskera"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <include layout="@layout/linea_separacion" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOwner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_euskera" />
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_owner"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:errorEnabled="true"
+                app:helperText="@string/required">
 
-            <RadioButton
-                android:id="@+id/rbCatalan"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <include layout="@layout/linea_separacion" />
+
+            <RadioGroup
+                android:id="@+id/rgFormat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_catalan" />
-        </RadioGroup>
+                android:layout_marginHorizontal="38dp"
+                android:checkedButton="@+id/rbPhysical"
+                android:orientation="horizontal">
 
-        <RadioGroup
-            android:id="@+id/rgLanguage2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checkedButton="@+id/rbSpanish"
-            android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/rbPhysical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/format_physical" />
 
-            <RadioButton
-                android:id="@+id/rbEnglish"
+                <RadioButton
+                    android:id="@+id/rbDigital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/format_digital" />
+
+                <RadioButton
+                    android:id="@+id/rbAudio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/format_audio" />
+            </RadioGroup>
+
+            <include layout="@layout/linea_separacion" />
+
+            <!-- Para poder pintar el RadioGroup en dos columnas tengo que tener 2 y una lógica
+                en la activity -->
+
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_english" />
+                android:layout_marginHorizontal="38dp"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rbJapanish"
+                <RadioGroup
+                    android:id="@+id/rgLanguage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checkedButton="@+id/rbSpanish"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbSpanish"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_spanish" />
+
+                    <RadioButton
+                        android:id="@+id/rbEuskera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_euskera" />
+
+                    <RadioButton
+                        android:id="@+id/rbCatalan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_catalan" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/rgLanguage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checkedButton="@+id/rbSpanish"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbEnglish"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_english" />
+
+                    <RadioButton
+                        android:id="@+id/rbJapanish"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/language_japanish" />
+                </RadioGroup>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <include layout="@layout/linea_separacion" />
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/language_japanish" />
-        </RadioGroup>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_price"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_price"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="number"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_isbn"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etISBN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_isbn"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etISBN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_synopsis"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSynopsis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_synopsis"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSynopsis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_publisher"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPublisher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_publisher"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPublisher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_category"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_category"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_saga"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSaga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_saga"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSaga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/book_purchase_date"
+                app:boxStrokeWidth="0dp"
+                app:startIconDrawable="@drawable/ic_calendar">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPurchaseDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/book_purchase_date"
-        app:boxStrokeWidth="0dp"
-        app:startIconDrawable="@drawable/ic_calendar">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPurchaseDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="false"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/book_comments"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp">
 
-    <include layout="@layout/linea_separacion" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    android:maxLines="3" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="@string/book_comments"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+            <include layout="@layout/linea_separacion" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etComments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="3" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <include layout="@layout/linea_separacion" />
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
