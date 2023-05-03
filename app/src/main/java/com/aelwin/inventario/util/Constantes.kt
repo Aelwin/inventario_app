@@ -9,7 +9,7 @@ class Constantes {
         const val SPACE_APP: String = "https://inventario-1-u1736663.deta.app/"
         const val LOCAL_APP: String = "http://10.0.2.2:8000/"
         const val ISBN_API_URL: String = "https://www.googleapis.com/books/v1/"
-        const val FORMATO_FECHA: String = "dd/MM/yyyy"
+        const val FORMATO_FECHA: String = "d/M/yyyy"
         const val FORMATO_FECHA_API: String = "yyyy-MM-dd"
     }
 
