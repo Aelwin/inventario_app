@@ -1,5 +1,6 @@
 package com.aelwin.inventario.activities
 
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.aelwin.inventario.api.ConsumeInventarioApi
 import com.aelwin.inventario.api.ReadingCreate
 import com.aelwin.inventario.databinding.ActivityReadingBinding
 import com.aelwin.inventario.databinding.DialogCreateReadingBinding
+import com.aelwin.inventario.fragments.DatePickerFragment
 import com.aelwin.inventario.util.Constantes
 import com.aelwin.inventario.util.Utilidades
 import kotlinx.coroutines.CoroutineScope
@@ -65,10 +67,13 @@ class ReadingActivity : AppCompatActivity() {
         dialog.setContentView(dialogBinding.root)
         dialogBinding.btAddReading.setOnClickListener {
             val reader = dialogBinding.etReader.text.toString()
-            val startDate = Utilidades.getStringApiDateFromDatePicker(dialogBinding.dpStartDate)
+            val startDate = dialogBinding.etStartDate.text.toString().takeIf { it.isNotEmpty() }
+                ?.let { Utilidades.getApiDateFromStringOrNull(it) }
             if (reader.isNotEmpty() && reader.isNotBlank() && startDate != null) {
+                val endDate = dialogBinding.etEndDate.text.toString().takeIf { it.isNotEmpty() }
+                    ?.let { Utilidades.getApiDateFromStringOrNull(it) }
                 val reading = ReadingCreate(dialogBinding.rbLectura.rating.toInt(),
-                    reader, startDate, Utilidades.getStringApiDateFromDatePicker(dialogBinding.dpEndDate), bookID)
+                    reader, startDate, endDate, bookID)
                 dialog.hide()
                 CoroutineScope(Dispatchers.IO).launch {// Este código es asíncrono
                     ConsumeInventarioApi.createReading(reading)
@@ -80,19 +85,22 @@ class ReadingActivity : AppCompatActivity() {
                 }
             }
         }
-        dialogBinding.icStartDate.setOnClickListener {
-            dialogBinding.dpStartDate.isVisible = true
+
+        val startDateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            val selectedDate = "$dayOfMonth/${month + 1}/$year"
+            dialogBinding.etStartDate.setText(selectedDate)
         }
-        dialogBinding.icEndDate.setOnClickListener {
-            dialogBinding.dpEndDate.isVisible = true
+        dialogBinding.etStartDate.setOnClickListener {
+            val datePickerFragment = DatePickerFragment(startDateSetListener)
+            datePickerFragment.show(supportFragmentManager, "datePicker")
         }
-        dialogBinding.dpStartDate.setOnDateChangedListener { _, _, _, _ ->
-            dialogBinding.dpStartDate.isVisible = false
-            dialogBinding.tvStartDate.text = Utilidades.getStringShowDateFromDatePicker(dialogBinding.dpStartDate)
+        val endDateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+            val selectedDate = "$dayOfMonth/${month + 1}/$year"
+            dialogBinding.etEndDate.setText(selectedDate)
         }
-        dialogBinding.dpEndDate.setOnDateChangedListener { _, _, _, _ ->
-            dialogBinding.dpEndDate.isVisible = false
-            dialogBinding.tvEndDate.text = Utilidades.getStringShowDateFromDatePicker(dialogBinding.dpEndDate)
+        dialogBinding.etEndDate.setOnClickListener {
+            val datePickerFragment = DatePickerFragment(endDateSetListener)
+            datePickerFragment.show(supportFragmentManager, "datePicker")
         }
         dialog.show()
     }

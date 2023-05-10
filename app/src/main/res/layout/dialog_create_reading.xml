@@ -1,8 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
 
     <EditText
         android:id="@+id/etReader"
@@ -13,83 +14,45 @@
         android:gravity="center_horizontal"
         android:hint="@string/reading_reader"
         android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:maxLines="1" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llStartDate"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilStartDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etReader">
+        android:hint="@string/reading_start_date"
+        app:boxStrokeWidth="0dp"
+        app:startIconDrawable="@drawable/ic_calendar">
 
-        <TextView
-            android:id="@+id/tvStartDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/reading_start_date" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etStartDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
-            android:id="@+id/icStartDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:contentDescription="@string/reading_date_select"
-            android:padding="8dp"
-            android:src="@android:drawable/ic_menu_today" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <DatePicker
-        android:id="@+id/dpStartDate"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEndDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llStartDate" />
+        android:hint="@string/reading_end_date"
+        app:boxStrokeWidth="0dp"
+        android:textAlignment="textStart"
+        android:gravity="start"
+        app:startIconDrawable="@drawable/ic_calendar">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llEndDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dpStartDate">
-
-        <TextView
-            android:id="@+id/tvEndDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/reading_end_date" />
-
-        <ImageView
-            android:id="@+id/icEndDate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/reading_date_select"
-            android:padding="8dp"
-            android:src="@android:drawable/ic_menu_today" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <DatePicker
-        android:id="@+id/dpEndDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llEndDate" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <RatingBar
         android:id="@+id/rbLectura"
@@ -98,10 +61,7 @@
         android:layout_marginVertical="8dp"
         android:numStars="5"
         android:rating="0"
-        android:stepSize="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dpEndDate" />
+        android:stepSize="1" />
 
     <Button
         android:id="@+id/btAddReading"
@@ -109,9 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         android:backgroundTint="@color/teal_200"
-        android:text="@string/create"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rbLectura" />
+        android:text="@string/create" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
