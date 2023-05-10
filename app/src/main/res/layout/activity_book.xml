@@ -26,6 +26,14 @@
                 android:contentDescription="@string/close"
                 android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_add"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                android:layout_marginHorizontal="30dp"/>
+
             <Button
                 android:id="@+id/btNew"
                 android:layout_width="wrap_content"
