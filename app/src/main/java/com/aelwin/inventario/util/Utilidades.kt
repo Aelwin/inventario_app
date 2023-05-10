@@ -1,6 +1,5 @@
 package com.aelwin.inventario.util
 
-import android.widget.DatePicker
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -15,29 +14,11 @@ class Utilidades {
             else ""
         }
 
-        fun getLocalDateFromDatePicker(datePicker: DatePicker): LocalDate? {
-            return LocalDate.of(datePicker.year, datePicker.month, datePicker.dayOfMonth)
-        }
-
-        fun getStringApiDateFromDatePicker(datePicker: DatePicker): String? {
-            return getStringDateFromDatePicker(datePicker, Constantes.FORMATO_FECHA_API)
-        }
-
-        fun getStringShowDateFromDatePicker(datePicker: DatePicker): String? {
-            return getStringDateFromDatePicker(datePicker, Constantes.FORMATO_FECHA)
-        }
-
         fun getApiDateFromStringOrNull(date: String?, format: String = Constantes.FORMATO_FECHA) : String? {
             return if (date != null)
                 LocalDate.parse(date, DateTimeFormatter.ofPattern(format))
                     .format(DateTimeFormatter.ofPattern(Constantes.FORMATO_FECHA_API))
             else null
-        }
-
-        private fun getStringDateFromDatePicker(datePicker: DatePicker, format: String): String? {
-            return getLocalDateFromDatePicker(datePicker)?.format(
-                DateTimeFormatter.ofPattern(format)
-            )
         }
     }
 }
