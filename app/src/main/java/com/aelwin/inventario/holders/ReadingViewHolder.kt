@@ -10,11 +10,14 @@ class ReadingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemReadingListBinding.bind(view)
 
-    fun render(reading: Reading) {
+    fun render(reading: Reading, onLongClickListener: (Int) -> Unit) {
         binding.tvReader.text = reading.lector
         binding.tvStartDate.text = reading.fechaInicioFormateada()
         binding.tvEndDate.text = reading.fechaFinFormateada()
         binding.rbLectura.rating = reading.valoracion.toFloat()
-        //binding.root.setOnClickListener { onItemSelected(reading.id) }
+        binding.root.setOnLongClickListener {
+            onLongClickListener(reading.id)
+            true
+        }
     }
 }

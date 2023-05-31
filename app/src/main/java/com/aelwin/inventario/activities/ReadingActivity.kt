@@ -1,11 +1,13 @@
 package com.aelwin.inventario.activities
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aelwin.inventario.R
 import com.aelwin.inventario.adapters.ReadingAdapter
 import com.aelwin.inventario.api.ConsumeInventarioApi
 import com.aelwin.inventario.api.ReadingCreate
@@ -55,7 +57,7 @@ class ReadingActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        readingAdapter = ReadingAdapter()
+        readingAdapter = ReadingAdapter { deleteReading(it) }
         binding.rvReading.setHasFixedSize(true)
         binding.rvReading.layoutManager = LinearLayoutManager(this)
         binding.rvReading.adapter = readingAdapter
@@ -102,6 +104,27 @@ class ReadingActivity : AppCompatActivity() {
             val datePickerFragment = DatePickerFragment(endDateSetListener)
             datePickerFragment.show(supportFragmentManager, "datePicker")
         }
+        dialog.show()
+    }
+
+    private fun deleteReading(id: Int) {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle(getString(R.string.delete_confirm))
+            .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                CoroutineScope(Dispatchers.IO).launch {
+                    val isDeleted: Boolean = ConsumeInventarioApi.deleteReading(id)
+                    if (isDeleted) {
+                        val readings = ConsumeInventarioApi.getReadings(bookID)
+                        runOnUiThread {
+                            binding.tvNoResults.isVisible = readings.isEmpty()
+                            readingAdapter.updateList(readings)
+                        }
+                    }
+                    //TODO tratamiento en caso de error al borrar
+                }
+            }
+            .setNegativeButton(getString(R.string.no), null)
+            .create()
         dialog.show()
     }
 

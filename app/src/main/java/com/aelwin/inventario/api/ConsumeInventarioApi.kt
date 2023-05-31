@@ -50,6 +50,11 @@ class ConsumeInventarioApi {
             return myResponse.body()
         }
 
+        suspend fun deleteReading(readingID: Int): Boolean {
+            val myResponse = retrofit.deleteReading(readingID)
+            return myResponse.code() == 204
+        }
+
         private fun getRetrofit(): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(Constantes.SPACE_APP)
